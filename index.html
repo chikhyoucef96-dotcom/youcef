@@ -1,0 +1,554 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTRE MARQUE - Boutique en ligne</title>
+    <style>
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-image {
+            height: 60px;
+            width: auto;
+            border-radius: 10px;
+        }
+        
+        .logo-text h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .digital {
+            color: #4dabf7;
+        }
+        
+        .slogan {
+            font-size: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .navigation ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .navigation a:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .navigation a.active {
+            background: #4dabf7;
+            box-shadow: 0 4px 12px rgba(77, 171, 247, 0.3);
+        }
+        
+        /* Section Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 60px;
+        }
+        
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #4dabf7 0%, #1e3c72 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(77, 171, 247, 0.4);
+        }
+        
+        /* Section Introduction */
+        .intro {
+            text-align: center;
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .intro h2 {
+            color: #1e3c72;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .intro p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Tableau des produits */
+        .products-table {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .products-table h3 {
+            color: #1e3c72;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: #f1f8ff;
+            padding: 15px;
+            text-align: left;
+            color: #1e3c72;
+            font-weight: 600;
+            border-bottom: 3px solid #4dabf7;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tbody tr:hover {
+            background: #f8fbff;
+            transform: scale(1.01);
+            transition: transform 0.2s;
+        }
+        
+        /* Section Avantages */
+        .advantages {
+            background: linear-gradient(135deg, #f1f8ff 0%, #e3f2fd 100%);
+            padding: 50px;
+            border-radius: 15px;
+            margin: 50px 0;
+        }
+        
+        .advantages h3 {
+            color: #1e3c72;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .advantages ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .advantages li {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+        }
+        
+        /* Section Call to Action */
+        .cta {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 15px;
+            margin: 60px 0;
+        }
+        
+        .cta p {
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #1e3c72;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h4 {
+            color: #4dabf7;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            color: #4dabf7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .navigation ul {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .advantages ul {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .products-table {
+                padding: 20px;
+            }
+            
+            .footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .intro, .products-table, .advantages, .cta {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête avec navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>VOTRE <span class="digital">MARQUE</span></h1>
+                    <p class="slogan">Votre destination shopping premium en ligne</p>
+                </div>
+            </div>
+            
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="panier.html">Panier</a></li>
+                    <li><a href="connexion.html">Mon Compte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section hero -->
+    <section class="hero">
+        <div class="container">
+            <h2>Produits Exclusifs de Haute Qualité</h2>
+            <p>Découvrez notre sélection premium pour répondre à tous vos besoins créatifs et professionnels</p>
+            <a href="produits.html" class="btn-primary">Explorer la collection</a>
+        </div>
+    </section>
+
+    <!-- Section présentation -->
+    <main class="container">
+        <section class="intro">
+            <h2>Bienvenue chez VOTRE MARQUE</h2>
+            <p>Leader dans la vente de produits numériques premium, nous nous engageons à fournir des ressources de qualité exceptionnelle pour vos projets. Notre équipe d'experts sélectionne avec soin chaque produit pour garantir satisfaction et performance.</p>
+        </section>
+
+        <!-- Tableau des produits populaires -->
+        <section class="products-table">
+            <h3>Nos Best-Sellers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Popularité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pack Premium Business</strong></td>
+                        <td>Suite complète de templates professionnels</td>
+                        <td>99 €</td>
+                        <td>⭐ 4.9/5 (850+ ventes)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Collection Logo Luxe</strong></td>
+                        <td>200 logos premium + identité visuelle</td>
+                        <td>79 €</td>
+                        <td>⭐ 4.8/5 (620+ ventes)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>UI Kit Design System</strong></td>
+                        <td>Kit d'interface utilisateur complet</td>
+                        <td>129 €</td>
+                        <td>⭐ 5.0/5 (450+ ventes)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Template E-commerce Pro</strong></td>
+                        <td>Solution e-commerce clé en main</td>
+                        <td>199 €</td>
+                        <td>⭐ 4.7/5 (320+ ventes)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Avantages -->
+        <section class="advantages">
+            <h3>Notre Promesse</h3>
+            <ul>
+                <li>✅ Livraison instantanée après paiement</li>
+                <li>✅ Support client 24/7</li>
+                <li>✅ Garantie satisfait ou remboursé 30 jours</li>
+                <li>✅ Mises à jour gratuites à vie</li>
+                <li>✅ Licence commerciale incluse</li>
+                <li>✅ Fichiers source modifiables</li>
+                <li>✅ Documentation détaillée</li>
+                <li>✅ Formation vidéo incluse</li>
+            </ul>
+        </section>
+
+        <!-- Statistiques -->
+        <section style="text-align: center; padding: 40px; background: white; border-radius: 15px; margin: 40px 0;">
+            <h3 style="color: #1e3c72; margin-bottom: 30px;">Nos Chiffres</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px;">
+                <div>
+                    <div style="font-size: 36px; color: #4dabf7; font-weight: bold;">10,000+</div>
+                    <div>Clients satisfaits</div>
+                </div>
+                <div>
+                    <div style="font-size: 36px; color: #4dabf7; font-weight: bold;">4.8/5</div>
+                    <div>Note moyenne</div>
+                </div>
+                <div>
+                    <div style="font-size: 36px; color: #4dabf7; font-weight: bold;">50,000+</div>
+                    <div>Téléchargements</div>
+                </div>
+                <div>
+                    <div style="font-size: 36px; color: #4dabf7; font-weight: bold;">24h</div>
+                    <div>Support réactif</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to action -->
+        <section class="cta">
+            <p>Prêt à transformer vos projets ?</p>
+            <a href="produits.html" class="btn-secondary">Commencer maintenant</a>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4>VOTRE MARQUE</h4>
+                <p>Excellence numérique depuis 2024</p>
+                <p>Projet Marketing Digital - Excellence en ligne</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>📧 Email : contact@votremarque.com</p>
+                <p>📞 Téléphone : 01 23 45 67 89</p>
+                <p>🕒 Support : 24h/24 7j/7</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <p><a href="index.html">Accueil</a></p>
+                <p><a href="produits.html">Produits</a></p>
+                <p><a href="panier.html">Panier</a></p>
+                <p><a href="connexion.html">Mon Compte</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Formats supportés</h4>
+                <p>🎨 PSD • AI • FIGMA</p>
+                <p>💻 HTML • CSS • JS</p>
+                <p>📊 PPT • DOC • XLS</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 VOTRE MARQUE. Tous droits réservés.</p>
+            <p>Licences commerciales et droit de réutilisation inclus</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les sections
+            document.querySelectorAll('.intro, .products-table, .advantages, .cta').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+            
+            // Effet sur les lignes du tableau
+            document.querySelectorAll('tbody tr').forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.style.transition = 'transform 0.2s ease';
+                });
+            });
+        });
+        
+        // Message de bienvenue
+        console.log('Bienvenue sur VOTRE MARQUE - Page d\'accueil chargée avec succès!');
+    </script>
+</body>
+</html>
+

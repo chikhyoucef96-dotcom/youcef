@@ -1,0 +1,809 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - VOTRE MARQUE</title>
+    <style>
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-image {
+            height: 60px;
+            width: auto;
+            border-radius: 10px;
+        }
+        
+        .logo-text h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .digital {
+            color: #e74c3c;
+        }
+        
+        .slogan {
+            font-size: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .navigation ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .navigation a:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .navigation a.active {
+            background: #e74c3c;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* Contenu principal */
+        main {
+            padding: 40px 0;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        /* Tableau panier */
+        .cart-table {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin: 30px 0;
+            border-collapse: collapse;
+        }
+        
+        .cart-table th {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .cart-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .cart-table tfoot {
+            background: #f8f9fa;
+        }
+        
+        .cart-table tfoot td {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        /* Champs formulaire */
+        input[type="number"] {
+            width: 80px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        /* Fieldset */
+        fieldset {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        legend {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+            padding: 0 15px;
+        }
+        
+        /* Form groups */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* Options radio */
+        .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .form-group input[type="radio"] + label {
+            display: inline-block;
+            margin-right: 25px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        /* Checkboxes */
+        .form-group input[type="checkbox"] + label {
+            cursor: pointer;
+            display: inline;
+        }
+        
+        /* Boutons */
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .btn-primary, .btn-secondary, .btn-small {
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            flex: 2;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+            flex: 1;
+        }
+        
+        .btn-secondary:hover {
+            background: #bdc3c7;
+            transform: translateY(-2px);
+        }
+        
+        .btn-small {
+            padding: 8px 20px;
+            background: #3498db;
+            color: white;
+            margin-left: 10px;
+        }
+        
+        /* Section informations */
+        .order-info {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin: 40px 0;
+        }
+        
+        .order-info h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        
+        .order-info ol {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .order-info li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+        
+        .contact-details {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .contact-details h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .copyright a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        /* Badge quantité */
+        .quantity-badge {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .cart-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .navigation ul {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            fieldset {
+                padding: 20px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .cart-table, fieldset, .order-info {
+            animation: slideIn 0.6s ease-out;
+        }
+        
+        /* Prix en surbrillance */
+        .highlight-price {
+            color: #e74c3c;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>VOTRE <span class="digital">MARQUE</span></h1>
+                    <p class="slogan">Votre panier numérique sécurisé</p>
+                </div>
+            </div>
+            
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li class="quantity-badge"><a href="panier.html" class="active">Panier <span id="cartCount" class="cart-count">0</span></a></li>
+                    <li><a href="connexion.html">Mon Compte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>🛒 Votre Panier</h2>
+        <p>Finalisez votre commande pour un téléchargement instantané</p>
+
+        <!-- Formulaire de commande -->
+        <form id="orderForm" onsubmit="return submitOrder(event)">
+            <fieldset>
+                <legend>Produits Sélectionnés</legend>
+                
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix unitaire</th>
+                            <th>Quantité</th>
+                            <th>Sous-total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Template PowerPoint Premium</strong></td>
+                            <td><span class="highlight-price">49 €</span></td>
+                            <td>
+                                <input type="number" id="ppt-qty" name="ppt-qty" min="0" value="1" onchange="updateTotal()" style="width: 60px;">
+                            </td>
+                            <td id="subPpt">49 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Collection Logo Élite</strong></td>
+                            <td><span class="highlight-price">79 €</span></td>
+                            <td>
+                                <input type="number" id="logo-qty" name="logo-qty" min="0" value="0" onchange="updateTotal()" style="width: 60px;">
+                            </td>
+                            <td id="subLogo">0 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pack Icônes Professionnel</strong></td>
+                            <td><span class="highlight-price">29 €</span></td>
+                            <td>
+                                <input type="number" id="icons-qty" name="icons-qty" min="0" value="0" onchange="updateTotal()" style="width: 60px;">
+                            </td>
+                            <td id="subIcons">0 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Template E-commerce Pro</strong></td>
+                            <td><span class="highlight-price">129 €</span></td>
+                            <td>
+                                <input type="number" id="web-qty" name="web-qty" min="0" value="0" onchange="updateTotal()" style="width: 60px;">
+                            </td>
+                            <td id="subWeb">0 €</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" style="text-align: right; font-size: 18px;"><strong>Total TTC :</strong></td>
+                            <td><strong id="totalAmount" style="font-size: 24px; color: #e74c3c;">49 €</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Informations de Facturation</legend>
+                
+                <div class="form-group">
+                    <label for="email">Adresse email *</label>
+                    <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                    <small>Les liens de téléchargement seront envoyés à cette adresse</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Entreprise (optionnel)</label>
+                    <input type="text" id="company" name="company" placeholder="Nom de votre entreprise">
+                </div>
+                
+                <div class="form-group">
+                    <label for="license">Type de licence *</label>
+                    <select id="license" name="license" required>
+                        <option value="standard">Licence Standard (usage personnel)</option>
+                        <option value="commercial">Licence Commerciale (usage professionnel)</option>
+                        <option value="enterprise">Licence Entreprise (usage illimité)</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Paiement Sécurisé</legend>
+                
+                <div class="form-group">
+                    <label>Mode de paiement *</label><br>
+                    <input type="radio" id="card" name="payment" value="card" checked>
+                    <label for="card">💳 Carte bancaire (paiement sécurisé)</label><br>
+                    
+                    <input type="radio" id="paypal" name="payment" value="paypal">
+                    <label for="paypal">🔵 PayPal (paiement instantané)</label><br>
+                    
+                    <input type="radio" id="transfer" name="payment" value="transfer">
+                    <label for="transfer">🏦 Virement bancaire</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="coupon">Code promo (optionnel)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="coupon" name="coupon" placeholder="Ex: PROMO20" style="flex: 1;">
+                        <button type="button" class="btn-small" onclick="applyCoupon()">Appliquer</button>
+                    </div>
+                    <small>Codes disponibles: PROMO20 (-20%), WELCOME10 (-10%)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        J'accepte les conditions générales de vente et la politique de licences *
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newsletter">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        Je souhaite recevoir les offres exclusives et nouvelles collections
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <input type="reset" value="🔄 Vider le panier" class="btn-secondary" onclick="resetCart()">
+                <input type="submit" value="✅ Payer et télécharger" class="btn-primary">
+            </div>
+        </form>
+
+        <!-- Informations complémentaires -->
+        <section class="order-info">
+            <h3>📦 Processus d'achat numérique</h3>
+            <ol>
+                <li><strong>Sélectionnez</strong> vos produits et quantités</li>
+                <li><strong>Payez</strong> en ligne de manière 100% sécurisée</li>
+                <li><strong>Recevez</strong> instantanément les liens de téléchargement par email</li>
+                <li><strong>Téléchargez</strong> et utilisez immédiatement vos produits</li>
+                <li><strong>Bénéficiez</strong> d'un support technique premium inclus</li>
+                <li><strong>Profitez</strong> des mises à jour gratuites à vie</li>
+            </ol>
+            
+            <div class="contact-details">
+                <h4>❓ Questions avant d'acheter ?</h4>
+                <p>📧 <strong>Support :</strong> <a href="mailto:support@votremarque.com">support@votremarque.com</a></p>
+                <p>📞 <strong>Téléphone :</strong> <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                <p>🕒 <strong>Horaires :</strong> Lundi-Vendredi 9h-19h (réponse sous 2h)</p>
+                <p>🔒 <strong>Sécurité :</strong> Paiement 100% sécurisé SSL</p>
+                <p>🔄 <strong>Garantie :</strong> 30 jours satisfait ou remboursé</p>
+                <p>💼 <strong>Licences :</strong> Commerciales incluses</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4>VOTRE MARQUE</h4>
+                <p>Votre source de produits numériques premium</p>
+                <p>Excellence digitale garantie</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <p><a href="index.html">Accueil</a></p>
+                <p><a href="produits.html">Produits</a></p>
+                <p><a href="panier.html">Panier</a></p>
+                <p><a href="connexion.html">Mon Compte</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Support</h4>
+                <p><a href="#">FAQ</a></p>
+                <p><a href="#">Conditions</a></p>
+                <p><a href="#">Confidentialité</a></p>
+                <p><a href="#">Licences</a></p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 VOTRE MARQUE - Boutique de produits numériques</p>
+            <p><a href="index.html">← Retour à l'accueil</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du panier
+        function updateTotal() {
+            const prices = {
+                ppt: 49,
+                logo: 79,
+                icons: 29,
+                web: 129
+            };
+            
+            const pptQty = parseInt(document.getElementById('ppt-qty').value) || 0;
+            const logoQty = parseInt(document.getElementById('logo-qty').value) || 0;
+            const iconsQty = parseInt(document.getElementById('icons-qty').value) || 0;
+            const webQty = parseInt(document.getElementById('web-qty').value) || 0;
+            
+            // Calcul des sous-totaux
+            const subPpt = pptQty * prices.ppt;
+            const subLogo = logoQty * prices.logo;
+            const subIcons = iconsQty * prices.icons;
+            const subWeb = webQty * prices.web;
+            
+            // Total
+            const total = subPpt + subLogo + subIcons + subWeb;
+            
+            // Mise à jour de l'affichage
+            document.getElementById('subPpt').textContent = subPpt + ' €';
+            document.getElementById('subLogo').textContent = subLogo + ' €';
+            document.getElementById('subIcons').textContent = subIcons + ' €';
+            document.getElementById('subWeb').textContent = subWeb + ' €';
+            document.getElementById('totalAmount').textContent = total + ' €';
+            
+            // Mise à jour du badge panier
+            const totalItems = pptQty + logoQty + iconsQty + webQty;
+            document.getElementById('cartCount').textContent = totalItems;
+            
+            // Animation du badge
+            if (totalItems > 0) {
+                document.getElementById('cartCount').style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    document.getElementById('cartCount').style.transform = 'scale(1)';
+                }, 300);
+            }
+            
+            return total;
+        }
+        
+        function applyCoupon() {
+            const coupon = document.getElementById('coupon').value.toUpperCase();
+            const currentTotal = updateTotal();
+            let discount = 0;
+            let message = '';
+            
+            switch(coupon) {
+                case 'PROMO20':
+                    discount = currentTotal * 0.20;
+                    message = 'Code PROMO20 appliqué ! 20% de réduction';
+                    break;
+                case 'WELCOME10':
+                    discount = currentTotal * 0.10;
+                    message = 'Code WELCOME10 appliqué ! 10% de réduction';
+                    break;
+                case '':
+                    message = 'Veuillez entrer un code promo';
+                    break;
+                default:
+                    message = 'Code promo invalide';
+            }
+            
+            if (discount > 0) {
+                const newTotal = currentTotal - discount;
+                document.getElementById('totalAmount').textContent = newTotal.toFixed(2) + ' €';
+                document.getElementById('totalAmount').style.color = '#27ae60';
+                
+                // Afficher la réduction
+                const discountElement = document.createElement('div');
+                discountElement.innerHTML = `<span style="color: #27ae60; font-weight: bold;">🎉 Réduction: -${discount.toFixed(2)} €</span>`;
+                discountElement.style.marginTop = '10px';
+                discountElement.style.padding = '10px';
+                discountElement.style.background = '#d5f4e6';
+                discountElement.style.borderRadius = '5px';
+                
+                const couponGroup = document.querySelector('[for="coupon"]').parentElement;
+                if (!couponGroup.querySelector('.discount-applied')) {
+                    discountElement.classList.add('discount-applied');
+                    couponGroup.appendChild(discountElement);
+                }
+            }
+            
+            if (message) alert(message);
+        }
+        
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const totalItems = parseInt(document.getElementById('cartCount').textContent);
+            
+            if (!email) {
+                alert('Veuillez remplir votre adresse email.');
+                document.getElementById('email').focus();
+                return false;
+            }
+            
+            if (totalItems === 0) {
+                alert('Votre panier est vide. Ajoutez des produits avant de payer.');
+                return false;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                alert('Vous devez accepter les conditions générales de vente.');
+                return false;
+            }
+            
+            // Simulation de paiement
+            const total = document.getElementById('totalAmount').textContent;
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            alert(`🎉 Commande confirmée !\n\n📧 Un email avec les liens de téléchargement a été envoyé à ${email}\n💰 Montant total: ${total}\n💳 Mode de paiement: ${paymentMethod}\n\nMerci pour votre confiance !`);
+            
+            // Réinitialisation
+            setTimeout(() => {
+                resetCart();
+                document.getElementById('orderForm').reset();
+                document.getElementById('email').value = email; // Garder l'email
+            }, 1000);
+            
+            return false;
+        }
+        
+        function resetCart() {
+            document.getElementById('ppt-qty').value = 0;
+            document.getElementById('logo-qty').value = 0;
+            document.getElementById('icons-qty').value = 0;
+            document.getElementById('web-qty').value = 0;
+            
+            // Supprimer les réductions affichées
+            document.querySelectorAll('.discount-applied').forEach(el => el.remove());
+            
+            updateTotal();
+            alert('Panier vidé !');
+        }
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTotal();
+            console.log('Page panier chargée - VOTRE MARQUE');
+            
+            // Animation d'entrée
+            document.querySelectorAll('.cart-table, fieldset, .order-info').forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
+</body>
+</html>
